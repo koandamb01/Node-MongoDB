@@ -6,11 +6,7 @@ db.createCollection('students')
 
 // Each document you insert into this collection should have the following format: 
 // ({name: STRING, home_state: STRING, lucky_number: NUMBER, birthday: {month: NUMBER, day: NUMBER, year: NUMBER}})
-db.students.insert({ name: 'Mohamed', home_state: 'New York', lucky_number: 11, birthday: { month: 04, day: 11, year: 1995 } })
-db.students.insert({ name: 'Momo', home_state: 'Ohio', lucky_number: 10, birthday: { month: 01, day: 10, year: 1995 } })
-db.students.insert({ name: 'Moussa', home_state: 'Washington', lucky_number: 01, birthday: { month: 01, day: 01, year: 1972 } })
-db.students.insert({ name: 'David', home_state: 'California', lucky_number: 05, birthday: { month: 11, day: 26, year: 1997 } })
-db.students.insert({ name: 'Latifa', home_state: 'New Jersey', lucky_number: 23, birthday: { month: 12, day: 16, year: 2000 } })
+
 
 // Get all students.
 db.students.find()
