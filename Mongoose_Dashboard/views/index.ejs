@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Mongoose Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br>
+        <% if (messages.add) {%>
+        <% for (msg of messages.add) {%>
+        <span class="text-success">
+            <%= msg %>
+        </span>
+        <% } %>
+        <% } %>
+
+        <% if (messages.delete) {%>
+        <% for (msg of messages.delete) {%>
+        <span class="text-danger">
+            <%= msg %>
+        </span>
+        <% } %>
+        <% } %>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">height</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(mongoose of mongooses) { %>
+                <tr>
+                    <td>
+                        <%= mongoose.name %>
+                    </td>
+                    <td>
+                        <%= mongoose.age %>
+                    </td>
+                    <td>
+                        <%= mongoose.height %>
+                    </td>
+                    <td>
+                        <a href="/mongooses/<%= mongoose.id %>" class="btn btn-primary">Show</a>
+                        <a href="/mongooses/edit/<%= mongoose.id %>" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/mongooses/new" class="btn btn-primary">add new Mongoose</a>
+    </div>
+</body>
+
+</html>
