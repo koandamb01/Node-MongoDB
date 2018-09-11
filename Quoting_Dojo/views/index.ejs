@@ -19,15 +19,11 @@
                 <div class="form-group row">
                     <div class="col-md-6 offset-3">
                         <label for="exampleInputEmail1">Your Name:</label>
-                        <% if (messages.quote) {%>
-                        <% for (var errorObject of messages.quote) {%>
-                        <% for (let key in errorObject) {%>
-                        <% if( key == 'name') {%>
+                        <% if (messages.name) {%>
+                        <% for (error of messages.name) {%>
                         <span class="text-danger">
-                            <%= errorObject[key] %>
+                            <%= error %>
                         </span>
-                        <% } %>
-                        <% } %>
                         <% } %>
                         <% } %>
                         <input type="text" class="form-control" name="name" placeholder="Your Name:">
@@ -37,14 +33,10 @@
                     <div class="col-md-6 offset-3">
                         <label for="exampleInputEmail1">Your Quote:</label>
                         <% if (messages.quote) {%>
-                        <% for (var errorObject of messages.quote) {%>
-                        <% for (let key in errorObject) {%>
-                        <% if( key == 'quote') {%>
+                        <% for (error of messages.quote) {%>
                         <span class="text-danger">
-                            <%= errorObject[key] %>
+                            <%= error %>
                         </span>
-                        <% } %>
-                        <% } %>
                         <% } %>
                         <% } %>
                         <textarea type="text" class="form-control" name="quote"></textarea>

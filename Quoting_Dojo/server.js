@@ -56,13 +56,9 @@ app.post('/quotes', (req, res) => {
     quote.save((err) => {
         // check if there is error
         if (err) {
-            var errors = []
             for (let key in err.errors) {
-                let obj = {}
-                obj[key] = err.errors[key].message;
-                errors.push(obj);
+                req.flash(key, err.errors[key].message);
             }
-            req.flash('quote', errors);
             res.redirect('/');
         }
         else {
