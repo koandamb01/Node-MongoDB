@@ -1,0 +1,20 @@
+{
+  "name": "MongoDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Intro_mongoDB.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koandamb01/Node-MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koandamb01/Node-MongoDB/issues"
+  },
+  "homepage": "https://github.com/koandamb01/Node-MongoDB#readme"
+}

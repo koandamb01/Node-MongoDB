@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Quoting Dojo</title>
+</head>
+
+<body>
+    <% JSON.stringify(messages) %>
+    <div class="container">
+        <div class="myform">
+            <h1 class="text-center">Welcome to Quoting Dojo</h1>
+            <form action="/quotes" method="POST">
+                <div class="form-group row">
+                    <div class="col-md-6 offset-3">
+                        <label for="exampleInputEmail1">Your Name:</label>
+                        <% if (messages.quote) {%>
+                        <% for (var errorObject of messages.quote) {%>
+                        <% for (let key in errorObject) {%>
+                        <% if( key == 'name') {%>
+                        <span class="text-danger">
+                            <%= errorObject[key] %>
+                        </span>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                        <input type="text" class="form-control" name="name" placeholder="Your Name:">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 offset-3">
+                        <label for="exampleInputEmail1">Your Quote:</label>
+                        <% if (messages.quote) {%>
+                        <% for (var errorObject of messages.quote) {%>
+                        <% for (let key in errorObject) {%>
+                        <% if( key == 'quote') {%>
+                        <span class="text-danger">
+                            <%= errorObject[key] %>
+                        </span>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                        <textarea type="text" class="form-control" name="quote"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-3">
+                        <button type="submit" class="btn btn-success btn-lg">Add My Quote!</button>
+                        <a href="/quotes" class="btn btn-primary btn-lg">Skip to Quotes</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
