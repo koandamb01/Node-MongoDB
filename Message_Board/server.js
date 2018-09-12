@@ -24,7 +24,7 @@ app.use(session({
 
 // ########### END SETTING MY APP ############# //
 
-require('./config/routes')(app);
+require('./server/config/routes')(app);
 
 // Run my server and listen to port 8000
 app.listen(8000, () => {
