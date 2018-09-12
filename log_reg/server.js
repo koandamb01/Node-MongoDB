@@ -131,7 +131,8 @@ app.post('/login', (req, res) => {
         if (err) {
             console.log("error while fetching", err);
             res.redirect('/');
-        } else {
+        }
+        else if (user) {
             // check password for matching
             bcrypt.compare(req.body.password, user.password).then(result => {
                 // check if password match
@@ -144,6 +145,10 @@ app.post('/login', (req, res) => {
                 req.flash("login", "Email or password invalid!");
                 res.redirect('/');
             });
+        }
+        else {
+            req.flash("login", "Email or password invalid!");
+            res.redirect('/');
         }
     });
 });
