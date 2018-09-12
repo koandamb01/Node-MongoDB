@@ -1,4 +1,4 @@
-const Collections = require('./mongo_db');
+const Collections = require('./models');
 const Message = Collections.Message
 const Comment = Collections.Comment
 
