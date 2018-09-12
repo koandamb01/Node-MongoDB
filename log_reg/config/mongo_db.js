@@ -13,6 +13,27 @@ db.on('open', () => {
 
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+// Comment Schema
+const CommentSchema = new mongoose.Schema({
+    comment: {
+        type: String,
+        required: [true, "Comment is required"],
+        minlength: [3, "Comment must be at least 3 characters"]
+    }
+}, { timestamps: true });
+
+// Message Schema
+const SecretSchema = new mongoose.Schema({
+    secret: {
+        type: String,
+        required: [true, "Secret is required"],
+        minlength: [3, "Secret must be at least 3 characters"]
+    },
+
+    comments: [CommentSchema]
+
+}, { timestamps: true });
+
 // User Schema
 const UserSchema = new mongoose.Schema({
     first_name: {
@@ -45,10 +66,14 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "*Password is required"],
-    }
+    },
+
+    secrets: [SecretSchema]
 
 }, { timestamps: true });
 
-module.exports = mongoose.model('User', UserSchema);
-
-
+module.exports = {
+    User: mongoose.model('User', UserSchema),
+    Secret: mongoose.model('Secret', SecretSchema),
+    Comment: mongoose.model('Comment', CommentSchema)
+};
