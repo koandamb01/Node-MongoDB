@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login/Registration</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Login and Registration</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <% if (messages.logout) {%>
+                <% for (error of messages.logout) {%>
+                <span class="text-danger">
+                    <%= error %>
+                </span>
+                <% } %>
+                <% } %>
+                <h2 class="h3 mb-3 font-weight-normal">Registration here!</h2>
+                <form action="/register" method="POST">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="first_name">First name</label>
+                            <input type="text" class="form-control" name="first_name" placeholder="First name">
+                            <% if (messages.first_name) {%>
+                            <% for (error of messages.first_name) {%>
+                            <span class="text-danger">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                            <% } %>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="last_name">Last name</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="Last name">
+                            <% if (messages.last_name) {%>
+                            <% for (error of messages.last_name) {%>
+                            <span class="text-danger">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                            <% if (messages.email) {%>
+                            <% for (error of messages.email) {%>
+                            <span class="text-danger">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                            <% } %>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="username">Birthday</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                                </div>
+                                <input type="date" name="birthday" class="form-control" placeholder="Birthday">
+                            </div>
+                            <% if (messages.birthday) {%>
+                            <% for (error of messages.birthday) {%>
+                            <span class="text-danger">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="first_name">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <% if (messages.password) {%>
+                            <% for (error of messages.password) {%>
+                            <span class="text-danger">
+                                <%= error %>
+                            </span>
+                            <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </form>
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <form class="form-signin" action="/login" method="POST">
+                    <br />
+                    <h1 class="h3 mb-3 font-weight-normal">Login in</h1>
+                    <% if (messages.login) {%>
+                    <% for (error of messages.login) {%>
+                    <span class="text-danger">
+                        <%= error %>
+                    </span>
+                    <% } %>
+                    <% } %>
+                    <label for="email" class="sr-only">Email address</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email address" autofocus>
+                    <br />
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <br />
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

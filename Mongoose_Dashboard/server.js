@@ -111,7 +111,7 @@ app.post('/mongooses/destroy/:id', (req, res) => {
 // Update mongoose information
 app.post('/mongooses/:id', (req, res) => {
     const id = req.params.id;
-    Mongoose.findOneAndUpdate({ _id: id }, { $set: { name: req.body.name, age: req.body.age, height: req.body.height } }, (err) => {
+    Mongoose.findOneAndUpdate({ _id: id }, { $set: { name: req.body.name, age: req.body.age, height: req.body.height } }, { runValidators: true }, (err) => {
         if (err) {
             for (let key in err.errors) {
                 req.flash(key, err.errors[key].message);
