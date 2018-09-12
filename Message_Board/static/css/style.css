@@ -1,0 +1,14 @@
+/* .container{
+    padding-top: 10vh;
+} */
+
+.comments-box{
+    padding-left: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8rem;
+}
+
+.messages-box{
+    height: 600px;
+    overflow: scroll;
+}

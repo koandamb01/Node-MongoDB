@@ -36,21 +36,23 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/mongooses/new', (req, res) => {
+    res.render('new');
+});
+
 app.get('/mongooses/:id', (req, res) => {
     const id = req.params.id;
-    if (id == "new") {
-        res.render('new');
-    } else {
-        Mongoose.findOne({ _id: id }, (err, data) => {
-            if (err) {
-                console.log("error while fetching", err);
-                res.redirect('/');
-            } else {
-                res.render('show', { mongoose: data });
-            }
-        });
-    }
+    Mongoose.findOne({ _id: id }, (err, data) => {
+        if (err) {
+            console.log("error while fetching", err);
+            res.redirect('/');
+        } else {
+            res.render('show', { mongoose: data });
+        }
+    });
 });
+
+
 
 app.get('/mongooses/edit/:id', (req, res) => {
     const id = req.params.id;
